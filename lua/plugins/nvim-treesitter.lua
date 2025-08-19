@@ -40,7 +40,7 @@ return {
             }, -- add more as needed
             highlight = { enable = true },
             indent = { enable = true },
-            -- parser_install_dir = "~/.cache/treesitter/parsers"
+            parser_install_dir = "~/.cache/treesitter/parsers"
         }
     end
 }
