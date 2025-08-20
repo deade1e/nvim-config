@@ -1,23 +1,34 @@
 return {
     "neovim/nvim-lspconfig",
     config = function()
-        vim.lsp.config['*'] = {
-            on_attach = function(client, bufnr)
-                local map = function(mode, lhs, rhs, desc)
-                    vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
-                end
-
-                map('n', '<leader>F', function() vim.lsp.buf.format { async = true } end, '[LSP] Format')
-                map('n', 'gd', vim.lsp.buf.definition, '[LSP] Go to definition')
-                map('n', 'gD', vim.lsp.buf.declaration, '[LSP] Go to declaration')
-                map('i', '<C-s>', vim.lsp.buf.signature_help, 'Signature Help')
+        local on_attach = function(client, bufnr)
+            local map = function(mode, lhs, rhs, desc)
+                vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
             end
-        }
+
+            map('n', '<leader>F', function() vim.lsp.buf.format { async = true } end, '[LSP] Format')
+            map('n', '<leader>rn', vim.lsp.buf.rename, '[LSP] Rename symbol')
+            map('n', 'gd', vim.lsp.buf.definition, '[LSP] Go to definition')
+            map('n', 'gD', vim.lsp.buf.declaration, '[LSP] Go to declaration')
+            map('n', 'gR', '<cmd>Telescope lsp_references<CR>', '[LSP] Show references (Telescope)')
+            map('i', '<C-s>', vim.lsp.buf.signature_help, 'Signature Help')
+        end
 
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function()
                 vim.lsp.buf.format()
             end,
+        })
+
+        vim.api.nvim_create_autocmd('LspAttach', {
+            group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+            callback = function(ev)
+                local client = vim.lsp.get_client_by_id(ev.data.client_id)
+                local bufnr = ev.buf
+
+                on_attach(client, bufnr)
+            end,
+
         })
 
         vim.lsp.enable('nixd')
