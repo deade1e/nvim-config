@@ -9,7 +9,7 @@ return {
         scroll = {},
         quickfile = {},
         notifier = {},
-        indent = {},
+        -- indent = {},
         picker = {
             sources = {
                 explorer = {
