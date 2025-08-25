@@ -16,11 +16,12 @@ vim.api.nvim_create_autocmd("CursorHold", {
 
 vim.wo.number = true
 vim.opt.swapfile = false
-vim.o.smartindent = true        -- Enable smart indentation
-vim.o.autoindent = true         -- Auto indent when new lines are added
-vim.o.expandtab = true          -- Use spaces instead of tabs. Keep it for markview.
-vim.o.tabstop = 4               -- Set the width of a tab character
-vim.o.shiftwidth = 4            -- Number of spaces to use for each indent level
+vim.o.smartindent = true -- Enable smart indentation
+vim.o.autoindent = true  -- Auto indent when new lines are added
+vim.o.expandtab = true   -- Use spaces instead of tabs. Keep it for markview.
+vim.o.tabstop = 4        -- Set the width of a tab character
+vim.o.shiftwidth = 4     -- Number of spaces to use for each indent level
+vim.o.virtualedit = ""
 
 vim.o.clipboard = 'unnamedplus' -- Use the system clipboard for copy-paste
 
