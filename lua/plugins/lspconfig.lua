@@ -91,21 +91,6 @@ return {
         vim.lsp.config('rust_analyzer', {
             settings = {
                 ["rust-analyzer"] = {
-                    inlayHints = {
-                        enable = true,
-                        -- Customize hint appearances
-                        parameterHints = { suffix = ": ", useNamedParameters = true },
-                        typeHints = {
-                            hideClosureInitialization = false,
-                            typeHintsPattern = ".*",
-                            separator = " ➔ ",
-                            mode = "always"
-                        },
-                        chainingHints = { enable = true },
-                        closingBraceHints = { enable = true },
-                        lifetimeElisionHints = { enable = "skip_trivial" },
-                        reborrowHints = { enable = "never" },
-                    },
                     checkOnSave = true
                 }
             },
