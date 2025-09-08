@@ -69,6 +69,8 @@ vim.keymap.set("n", "<leader>t", ':terminal<CR>', { desc = "Open Terminal" })
 vim.keymap.set("n", "<leader>lg", function() require('snacks').lazygit() end, { desc = "Open lazygit" })
 vim.keymap.set("n", "<leader>e", function() require('snacks').explorer() end, { desc = "Toggle Explorer" })
 
+vim.o.termguicolors = true
+
 vim.filetype.add({ -- Disable htmldjango for bug in treesitter
     extension = {
         html = "html",
