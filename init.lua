@@ -71,6 +71,8 @@ vim.keymap.set("n", "<leader>e", function() require('snacks').explorer() end, { 
 
 vim.o.termguicolors = true
 
+vim.cmd(":colorscheme vscode")
+
 vim.filetype.add({ -- Disable htmldjango for bug in treesitter
     extension = {
         html = "html",
